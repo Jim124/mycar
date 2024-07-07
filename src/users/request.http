@@ -3,8 +3,16 @@ POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-  "email":"pingandu@gmail.com",
-  "password":"234ew"
+  "email":"pingan33@gmail.com",
+  "password":"234ew3434"
+}
+#### signin
+POST http://localhost:3000/auth/signin
+Content-Type: application/json
+
+{
+  "email":"pingan33@gmail.com",
+  "password":"234ew3434"
 }
 
 ###FindUser with a id
