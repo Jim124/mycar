@@ -9,10 +9,11 @@ import {
   Query,
   NotFoundException,
   UseInterceptors,
-  ClassSerializerInterceptor,
+  // ClassSerializerInterceptor, nest recommend approach
 } from '@nestjs/common';
 
 import { SerializeInterceptor } from '../interceptors/serialize.interceptor';
+import { UserDto } from './dtos/user.dto';
 
 import { UsersService } from './users.service';
 
@@ -28,7 +29,7 @@ export class UsersController {
     this.userService.createUser(body.email, body.password);
   }
 
-  @UseInterceptors(SerializeInterceptor)
+  @UseInterceptors(new SerializeInterceptor(UserDto))
   @Get('/:id')
   async findUser(@Param('id') id: string) {
     const user = await this.userService.findOne(parseInt(id));
