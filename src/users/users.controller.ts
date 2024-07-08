@@ -9,12 +9,11 @@ import {
   Query,
   NotFoundException,
   Session,
-  UseInterceptors,
+
   // ClassSerializerInterceptor, nest recommend approach
 } from '@nestjs/common';
 
 import { Serialize } from '../interceptors/serialize.interceptor';
-import { CurrentInterceptor } from './interceptors/current-user.interceptor';
 
 import { UserDto } from './dtos/user.dto';
 
@@ -28,7 +27,6 @@ import { User } from './user.entity';
 
 @Controller('auth')
 @Serialize(UserDto)
-@UseInterceptors(CurrentInterceptor)
 export class UsersController {
   constructor(
     private userService: UsersService,
