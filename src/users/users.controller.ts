@@ -9,11 +9,12 @@ import {
   Query,
   NotFoundException,
   Session,
-
+  UseGuards,
   // ClassSerializerInterceptor, nest recommend approach
 } from '@nestjs/common';
 
 import { Serialize } from '../interceptors/serialize.interceptor';
+import { AuthGuard } from 'src/guards/auth.guard';
 
 import { UserDto } from './dtos/user.dto';
 
@@ -39,6 +40,7 @@ export class UsersController {
   // }
 
   @Get('/whoami')
+  @UseGuards(AuthGuard)
   whoAmI(@CurrentUser() user: User) {
     return user;
   }
